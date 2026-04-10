@@ -1,0 +1,65 @@
+name: waqtak
+description: "وقتك - Waqtak: A Windows desktop app for periodic Islamic reminders"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Core packages for the app
+  window_manager: ^0.3.9
+  system_tray: ^2.0.3
+  flutter_tts: ^4.2.5
+  audioplayers: ^6.0.0
+  flutter_local_notifications: ^18.0.1
+  shared_preferences: ^2.3.2
+  launch_at_startup: ^0.3.1
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.14.4
+  msix: ^3.16.7
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/sounds/
+    - assets/images/
+    - assets/audio/time/
+    - assets/audio/dhikr/
+    - assets/phrases.json
+
+flutter_icons:
+  windows:
+    generate: true
+    image_path: "assets/images/app_icon.png"
+    icon_size: 256
+
+# ======================================
+# MSIX Configuration for Microsoft Store
+# ======================================
+# Before publishing, replace:
+# - publisher: with your Publisher ID from Partner Center
+# - publisher_display_name: with your name/company
+# - identity_name: with your reserved app name
+# ======================================
+msix_config:
+  display_name: وقتك - Waqtak
+  publisher_display_name: YourName  # استبدل باسمك
+  identity_name: YourName.Waqtak    # استبدل بـ identity من Partner Center
+  publisher: CN=REPLACE-WITH-YOUR-PUBLISHER-ID  # من Partner Center
+  msix_version: 1.0.0.0
+  logo_path: assets/images/app_icon.png
+  capabilities: runFullTrust
+  languages: ar, en
+  store: true
+
